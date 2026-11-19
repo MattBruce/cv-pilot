@@ -38,17 +38,20 @@ Activate this skill when:
 
 ### Step 1: Ingest & Inspect
 1. Read `master-cv.md` completely.
-2. Locate the job specification in the target application folder. Accept it in any of the following formats:
-   - `job-spec.md` — Markdown (preferred)
-   - `job-spec.txt` — Plain text
-   - `job-spec.pdf` — PDF (read via available tools)
-   - `job-spec.html` — HTML (strip tags, extract body text)
-   - `job-spec.docx` — Word document (extract plain text)
-   - **Inline paste:** If the user pastes the job description directly into the chat, use that text.
+2. Locate the job specification using the following lookup order:
 
-   **If none of the above exist in the folder**, ask the user to either drop a file into the folder or paste the JD directly.
+   **a. `job-spec.md` exists** → use it directly as the canonical job spec.
 
-   **If the job spec is provided in any format other than `job-spec.md`** (or pasted inline), extract the plain text content and write it to `applications/<application-folder>/job-spec.md` before proceeding. Confirm this normalisation step to the user.
+   **b. `job-spec.*` exists (any other extension)** → extract the plain text content, write it to `job-spec.md`, and confirm the normalisation to the user.
+
+   **c. No `job-spec.*` file exists** → scan all files in the target folder and exclude known output files (`tailored-cv.md`, `cover-letter.md`, `tailored-cv.pdf`, `notes.md`). Then:
+   - If **one unknown file** is found: treat it as the job spec. State clearly what file you found and what you are treating it as, before proceeding. Extract the content and write it to `job-spec.md`.
+   - If **multiple unknown files** are found: list them and ask the user which is the job description (or whether they should be combined).
+   - If **no files** are found: ask the user to drop a file into the folder or paste the JD directly into the chat.
+
+   **d. Inline paste** → if the user pastes the job description directly into the chat and no file is found, use that text. Write it to `job-spec.md` so an audit record is created.
+
+   > In all cases where normalisation occurs, the final canonical record is `job-spec.md` written to disk in the target folder.
 
 3. Check for any existing notes, salary targets, or role context inside the folder (e.g. `notes.md`).
 

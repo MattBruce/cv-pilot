@@ -70,18 +70,15 @@ Your IDE's coding agent (AGY, Claude Code, Cursor, Codex, etc.) has direct files
    ```bash
    mkdir -p applications/2026-11_stripe_staff-engineer
    ```
-2. Add the job description to that folder. The agent accepts any of these formats — use whichever is easiest:
+2. Drop the job description into that folder in any format — or just paste it into the agent chat:
 
-   | Format | File to drop in the folder |
+   | How you have it | What to do |
    |---|---|
-   | Copy-paste from web / recruiter email | Just paste it directly into the agent chat |
-   | Plain text | `job-spec.txt` |
-   | Markdown | `job-spec.md` |
-   | PDF (downloaded from job board) | `job-spec.pdf` |
-   | HTML (saved from browser) | `job-spec.html` |
-   | Word document | `job-spec.docx` |
+   | Copy-pasted from web / recruiter email | Paste directly into the agent chat |
+   | Any file (`jd.pdf`, `role.docx`, `spec.txt`, …) | Drop it into the folder — any filename is fine |
+   | Named `job-spec.*` | Drop it in — the agent will normalise it |
 
-   The agent will extract the content and normalise it to `job-spec.md` automatically before proceeding. You can also append personal notes (salary expectations, referral context, deadline) to that file below a `---` separator.
+   The agent scans the folder automatically, identifies the job description, and normalises it to `job-spec.md` as an audit record. It will tell you what it found before proceeding. You can also add personal notes (salary target, referral context, deadline) to `notes.md` in the same folder.
 3. Open your coding agent chat and prompt:
    > *"Tailor an application for `applications/2026-11_stripe_staff-engineer`"*
    > *(or `/tailor-application applications/2026-11_stripe_staff-engineer` in AGY)*

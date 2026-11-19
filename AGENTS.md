@@ -69,8 +69,11 @@ When the user instructs you to prepare, tailor, or generate an application for a
 
 1. **Read Inputs:**
    - Read `master-cv.md` (paying close attention to **Section 13** for tone and phrasing preferences).
-   - Locate the job specification in `applications/<folder>/`. Accept any of these formats: `job-spec.md`, `job-spec.txt`, `job-spec.pdf`, `job-spec.html`, `job-spec.docx`, or a JD pasted directly into the chat. If the spec is in any format other than `job-spec.md` (or pasted inline), extract the plain text and write it to `applications/<folder>/job-spec.md` before proceeding.
-   - If no job spec is found and none was pasted, ask the user to provide one before continuing.
+   - Locate the job specification in `applications/<folder>/` using the following lookup order:
+     1. **`job-spec.md` exists** → use directly.
+     2. **`job-spec.*` exists (any other extension)** → extract plain text, write to `job-spec.md`, confirm to user.
+     3. **No `job-spec.*` file** → scan the folder and exclude known outputs (`tailored-cv.md`, `cover-letter.md`, `tailored-cv.pdf`, `notes.md`). If one unknown file is found, state what you found and treat it as the job spec; if multiple, ask the user which is the JD; if none, ask the user to provide one.
+     4. **Inline paste** → if the user pastes the JD into the chat, write it to `job-spec.md` as an audit record.
    - Check for any local notes or tone overrides in `notes.md`.
    - Review guidelines in `prompts/tailor-cv.md` and `prompts/cover-letter.md`.
 2. **Perform Gap Analysis:**
