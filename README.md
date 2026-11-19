@@ -9,7 +9,7 @@ An AI-augmented career knowledge base and application generator. Store your enti
 | Tool | Purpose | Install |
 |---|---|---|
 | **Python 3** | PDF compiler | pre-installed on macOS / `brew install python` |
-| **Typst** | PDF rendering engine | `brew install typst` |
+| **Typst** | PDF rendering engine | macOS: `brew install typst` · Linux: `snap install typst` · Windows: `winget install typst` · [All platforms →](https://typst.app/) |
 | **AI coding agent** | Automates tailoring | AGY, Claude Code, Cursor, Codex, etc. |
 
 ---
@@ -44,11 +44,15 @@ An AI-augmented career knowledge base and application generator. Store your enti
 
 ## Getting Started
 
+**Fork this repo**, then follow the steps below.
+
 ### 1. Set Up Your Master CV
+
 Copy `master-cv-template.md` to `master-cv.md` and fill it in:
 
 ```bash
 cp master-cv-template.md master-cv.md
+echo "master-cv.md" >> .gitignore
 ```
 
 The template is structured into sections covering your career history, skills, education, certifications, and application preferences. The more detail you add, the better your tailored outputs will be. Focus on **facts, metrics, and specific contributions** — rough notes are fine.
@@ -66,7 +70,7 @@ Your IDE's coding agent (AGY, Claude Code, Cursor, Codex, etc.) has direct files
    ```bash
    mkdir -p applications/2026-11_stripe_staff-engineer
    ```
-2. Save the target job description into that folder as `job-spec.md`.
+2. Save the target job description as `job-spec.md` in that folder. Paste in the full JD text — you can also append any personal notes (salary expectations, referral context, deadline) below a `---` separator.
 3. Open your coding agent chat and prompt:
    > *"Tailor an application for `applications/2026-11_stripe_staff-engineer`"*
    > *(or `/tailor-application applications/2026-11_stripe_staff-engineer` in AGY)*
@@ -94,10 +98,7 @@ If you're using a web chat interface (ChatGPT, Claude.ai, Gemini):
 
 cv-pilot includes a built-in compiler powered by [Typst](https://typst.app/) to render publication-grade, ATS-compliant vector PDFs:
 
-1. **Install Typst (once):**
-   ```bash
-   brew install typst
-   ```
+1. **Install Typst (once)** — see the Prerequisites table above for your platform.
 2. **Automated upon Application Creation:** Coding agents will automatically compile `tailored-cv.pdf` alongside `tailored-cv.md` during tailoring.
 3. **Manual Recompilation on Demand:**
    - **Ask Your Coding Agent:**
