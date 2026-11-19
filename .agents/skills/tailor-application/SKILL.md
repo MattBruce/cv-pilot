@@ -38,8 +38,19 @@ Activate this skill when:
 
 ### Step 1: Ingest & Inspect
 1. Read `master-cv.md` completely.
-2. Read `applications/<application-folder>/job-spec.md`. If the file does not exist, ask the user to provide or paste the job description into that directory first.
-3. Check for any existing notes, salary targets, or role context inside the folder.
+2. Locate the job specification in the target application folder. Accept it in any of the following formats:
+   - `job-spec.md` — Markdown (preferred)
+   - `job-spec.txt` — Plain text
+   - `job-spec.pdf` — PDF (read via available tools)
+   - `job-spec.html` — HTML (strip tags, extract body text)
+   - `job-spec.docx` — Word document (extract plain text)
+   - **Inline paste:** If the user pastes the job description directly into the chat, use that text.
+
+   **If none of the above exist in the folder**, ask the user to either drop a file into the folder or paste the JD directly.
+
+   **If the job spec is provided in any format other than `job-spec.md`** (or pasted inline), extract the plain text content and write it to `applications/<application-folder>/job-spec.md` before proceeding. Confirm this normalisation step to the user.
+
+3. Check for any existing notes, salary targets, or role context inside the folder (e.g. `notes.md`).
 
 ### Step 2: Gap Analysis & Strategic Alignment
 Before drafting the documents, perform a strategic alignment check:

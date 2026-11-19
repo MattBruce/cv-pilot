@@ -70,7 +70,18 @@ Your IDE's coding agent (AGY, Claude Code, Cursor, Codex, etc.) has direct files
    ```bash
    mkdir -p applications/2026-11_stripe_staff-engineer
    ```
-2. Save the target job description as `job-spec.md` in that folder. Paste in the full JD text — you can also append any personal notes (salary expectations, referral context, deadline) below a `---` separator.
+2. Add the job description to that folder. The agent accepts any of these formats — use whichever is easiest:
+
+   | Format | File to drop in the folder |
+   |---|---|
+   | Copy-paste from web / recruiter email | Just paste it directly into the agent chat |
+   | Plain text | `job-spec.txt` |
+   | Markdown | `job-spec.md` |
+   | PDF (downloaded from job board) | `job-spec.pdf` |
+   | HTML (saved from browser) | `job-spec.html` |
+   | Word document | `job-spec.docx` |
+
+   The agent will extract the content and normalise it to `job-spec.md` automatically before proceeding. You can also append personal notes (salary expectations, referral context, deadline) to that file below a `---` separator.
 3. Open your coding agent chat and prompt:
    > *"Tailor an application for `applications/2026-11_stripe_staff-engineer`"*
    > *(or `/tailor-application applications/2026-11_stripe_staff-engineer` in AGY)*
@@ -87,7 +98,7 @@ Your IDE's coding agent (AGY, Claude Code, Cursor, Codex, etc.) has direct files
 If you're using a web chat interface (ChatGPT, Claude.ai, Gemini):
 
 1. Create the application folder: `applications/YYYY-MM_company_role/`.
-2. Save the job description as `job-spec.md`.
+2. Copy the job description text (from any source) into `job-spec.md`.
 3. Open `prompts/tailor-cv.md` and copy the prompt template.
 4. Paste the prompt, the job description, and the contents of `master-cv.md` into your web chat.
 5. Save the result as `tailored-cv.md` and repeat with `prompts/cover-letter.md` for `cover-letter.md`.
