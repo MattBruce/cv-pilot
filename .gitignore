@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Application outputs — keep private, never commit to a public repo
+applications/*/tailored-cv.pdf
+applications/*/tailored-cv.typ
+
+# To exclude all application content entirely, uncomment the line below:
+# applications/*/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
